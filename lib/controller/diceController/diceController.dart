@@ -15,10 +15,14 @@ class diceController with ChangeNotifier {
     ImageConstant.dice5,
     ImageConstant.dice6,
   ];
-  generate() {
+  generate() async {
     isLoading = true;
     notifyListeners();
+    await Future.delayed(Duration(seconds: 2)).then((value) {
+      isLoading = false;
+    });
     randomNum = Random().nextInt(6);
+    //we uses random for generating random images for this case from the image list of dice images
     notifyListeners();
   }
 }
